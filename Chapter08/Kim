@@ -1,0 +1,269 @@
+/*
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+
+	return 0;
+}
+*/
+
+/*8-1
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int add(int x, int y) {
+	return x + y;
+}
+
+int main() {
+	int N;
+	int sum = 0;
+	scanf("%d", &N);
+
+	for (int i = 1; i <= N; i++)
+		sum=add(sum, i);
+
+	printf("%d", sum);
+
+	return 0;
+}*/
+
+/*8-2
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int sum(int n) {
+	int sum;
+	sum = n * (n + 1) / 2;
+
+	return sum;
+}
+
+int main() {
+	int A, B, total;
+
+	scanf("%d%d", &A, &B);
+	total = sum(B) - sum(A-1);
+	printf("%d", total);
+
+	return 0;
+}*/
+
+/*8-3
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int sum(int n) {
+	int sum;
+	sum = n * (n + 1) / 2;
+
+	return sum;
+}
+
+int main() {
+	int N;
+	int total = 0;
+	scanf("%d", &N);
+	for (int i = 1; i <= N; i++)
+		total += sum(i);
+	printf("%d", total);
+
+	return 0;
+}*/
+
+/*8-4
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void print_row1(int x) {
+	for (int i = 0; i < x; i++)
+		printf("%d", x);
+	printf("\n");
+}
+
+void print_row2(int x) {
+	printf("%d", x);
+	for (int i = 0; i < x - 2; i++)
+		printf(" ");
+	printf("%d\n", x);
+}
+
+
+int main() {
+	int x;
+
+	scanf("%d", &x);
+	print_row1(x);
+	for (int i = 0; i < x - 2; i++)
+		print_row2(x);
+	print_row1(x);
+
+	return 0;
+}*/
+
+/*8-5
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+void print_triangle(x) {
+	for (int i = 1; i <= x-1; i++) {
+		for (int j = 1; j <= i; j++)
+			printf("*");
+		printf("\n");
+	}
+	for (int j = 1; j <= x; j++)
+		printf("*");
+}
+
+int main() {
+	int x;
+
+	while (1) {
+		scanf("%d", &x);
+		if (x > 0)
+			print_triangle(x);
+		else
+			break;
+	}
+
+	return 0;
+}*/
+
+/*8-6
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int func1(int x) {
+	int result;
+	result = 2 * x * x - 5 * x + 1;
+
+	return result;
+}
+
+int main() {
+	int x;
+	scanf("%d", &x);
+	printf("%d", func1(x));
+
+	return 0;
+}*/
+
+/*8-7
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int func2(x, a, b, c) {
+	int result;
+	result = a * x * x + b * x + c;
+
+	return result;
+}
+
+int main() {
+	int x, a, b, c;
+	scanf("%d", &x);
+	scanf("%d%d%d", &a, &b, &c);
+	printf("%d", func2(x, a, b, c));
+
+	return 0;
+}*/
+
+/*8-8
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int func2(x, a, b, c) {
+	int result;
+	result = a * x * x + b * x + c;
+
+	return result;
+}
+
+int main() {
+	int x, a, b, c, d, e, f;
+	int result;
+	scanf("%d", &x);
+	scanf("%d%d%d", &a, &b, &c);
+	scanf("%d%d%d", &d, &e, &f);
+	printf("%d", func2(func2(x, a, b, c), d, e, f));
+
+	return 0;
+}*/
+
+/*8-9
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int max1, max2;
+
+void update_max(x) {
+	int temp;
+	if (x > max1) {
+		max2 = max1;
+		max1 = x;
+	}
+	else if (x > max2) {
+		max2 = x;
+	}
+	else
+		;
+}
+
+int main() {
+	int x,y;
+	scanf("%d%d", &x, &y);
+	if (x > y) {
+		max1 = x;
+		max2 = y;
+	}
+	else {
+		max1 = y;
+		max2 = x;
+	}
+	while (1) {
+		scanf("%d", &x);
+		if (x != 0)
+			update_max(x);
+		else
+			break;
+	}
+	printf("%d %d", max1, max2);
+
+	return 0;
+}*/
+
+/*8-10*/
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int N;
+
+void die1(int x);
+void die2(int x, int y);
+void die3(int x, int y, int z);
+
+
+int main() {
+	scanf("%d", &N);
+	for (int x = 1; x <= 6; x++)
+		die1(x);
+
+	return 0;
+}
+
+void die1(int x) {
+	for (int y = 1; y <= 6; y++)
+		if (N > x + y)
+			die2(x, y);
+}
+
+void die2(int x, int y) {
+	for (int z = 1; z <= 6; z++)
+		die3(x, y, z);
+}
+
+void die3(int x, int y, int z) {
+	if (N == x + y + z)
+		printf("%d %d %d\n", x, y, z);
+}
